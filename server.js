@@ -1,13 +1,28 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3000; 
+const path = require("path");
+const port = 3000;
 
-// Define routes
-app.get('/', (req, res) => {
-    res.send('Hello, world!');
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "app", "views"));
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("/css/style.css", (req, res) => {
+  res.sendFile(path.join(__dirname, "app", "views", "css", "style.css"));
 });
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+app.use("/img", express.static(path.join(__dirname, "app", "views", "img")));
+
+app.use(
+  "/videos",
+  express.static(path.join(__dirname, "app", "views", "videos"))
+);
+
+app.get("/", (req, res) => {
+  res.render("index");
+});
+
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
 });

@@ -105,3 +105,12 @@ This directory contains all the installed Node.js packages and dependencies of t
 
 ## package.json
 This file contains metadata about the Node.js application and its dependencies. It also defines scripts for various tasks such as starting the server, running tests, etc.
+
+
+
+# tailwind command 
+## npx tailwindcss -i ./taiwindcss/input.css -o ./app/views/css/Footer.css --watch
+
+# Server run command 
+
+## npm run start
